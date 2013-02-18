@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="gb2312"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="VR_Config_Release"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		Optimization="3"
+		InlineFunctionExpansion="2"
+		EnableIntrinsicFunctions="true"
+		FavorSizeOrSpeed="1"
+		OmitFramePointers="true"
+		PreprocessorDefinitions="NDEBUG=1;RELEASE=1;SHIPPING=0;"
+		MinimalRebuild="true"
+		BasicRuntimeChecks="0"
+		RuntimeLibrary="2"
+		DebugInformationFormat="3"
+	/>
+	<Tool
+		Name="VCLinkerTool"
+		AdditionalDependencies="Winmm.lib dxgi.lib d3d9.lib d3dx9.lib dinput8.lib dxguid.lib XInput.lib"
+		OutputFile="..\..\..\Binaries\Release$(ProjectName).exe"
+		LinkIncremental="2"
+		AdditionalLibraryDirectories="&quot;..\..\..\Binaries\Lib\$(ConfigurationName)&quot;;&quot;$(DXSDK_DIR)Lib\x86&quot;"
+		GenerateDebugInformation="true"
+		ProgramDatabaseFile="$(IntDir)\$(TargetName).pdb"
+		SubSystem="2"
+		SupportUnloadOfDelayLoadedDLL="true"
+		TargetMachine="1"
+	/>
+</VisualStudioPropertySheet>

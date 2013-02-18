@@ -1,0 +1,2 @@
+设计目标：	提供Windows，console，file几种log输出方式，且支持同时输出至多种device
+解决方案：	

@@ -1,0 +1,2 @@
+SmartPointer(Monster);
+SmartPointer(Player);

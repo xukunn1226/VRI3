@@ -1,0 +1,29 @@
+	工程配置框架的设计目标是：一，方便程序员添加新的工程，二，划分清晰的临时文件，库文件及发布版本时所需的文件位置。参考UE3,Gamebryo目录结构
+	目录结构图：	Root
+						.\Binaries					二进制文件目录，LIB等
+							.\Lib						链接所需的库文件，如Debug是调试版静态库文件
+								.\Debug
+								.\Release
+								.\Shipping
+						.\Development				程序开发库目录
+							.\External					第三方库
+							.\Intermediate				临时文件
+							.\Src						源文件（引擎，编辑器，项目）
+								.\Core
+								.\D3D9Drv
+								.\Engine
+							.\Tools						辅助工具
+						.\Engine					引擎目录
+						.\ExampleGame				Demo
+	
+	为方便统一管理工程属性，使用Property Manager机制，并有VR_Common，VR_Config_Debug, VR_Config_Release等属性配置文件。
+	所有配置都需引用VR_Common，相应的DEBUG CONFIG还需引用VR_Config_Debug，RELEASE CONFIG还需引用VR_Config_Release，且
+	VR_Common优先级高于其他。
+	
+	三种配置方案说明：
+	Debug：		无优化、可调式；
+	Release：	部分优化、可调式；
+	Shipping：	全局优化，不可调式；
+	
+	针对不同配置有三个Preprocessor Definitions：_DEBUG, RELEASE, SHIPPING，
+	在DEBUG模式下，有LOG,STAT；RELEASE模式下，有LOG,STAT；SHIPPING模式下，无LOG（除FILE）,STAT；

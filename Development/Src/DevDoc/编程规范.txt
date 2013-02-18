@@ -1,0 +1,144 @@
+/**	
+ *	本规范基于GOOGLE C++ STYLE，并结合个人习惯而成，目的在于清晰，了然，一致性。
+**/
+
+1、 所有头文件都应该使用 #define 防止头文件被多重包含, 命名格式当是: <PROJECT>_<PATH>_<FILE>_H_
+2、 能用前置声明的地方尽量不使用 #include
+3、 #include 的路径及顺序，例foo2.cpp包含如下：
+	 a. dir2/foo2.h
+	 b. C 系统文件 
+	 c. C++ 系统文件 
+	 d. 其他库的 .h 文件 
+	 e. 本项目内 .h 文件 
+4、 如果你必须定义非成员函数, 又只是在 .cc 文件中使用它, 可使用匿名名字空间或 static 链接关键字
+     (如 static int Foo() {...}) 限定其作用域
+5、 构造函数中只进行那些没什么意义的初始化, 可能的话, 使用 Init() 方法集中初始化有意义的 (non-trivial) 数据
+6、 如果一个类定义了若干成员变量又没有其它构造函数, 必须定义一个默认构造函数. 否则编译器将自动生产一个很糟糕的默认构造函数
+7、 对单个参数的构造函数使用 C++ 关键字 explicit
+8、 仅在代码中需要拷贝一个类对象的时候使用拷贝构造函数; 大部分情况下都不需要, 此时应使用 DISALLOW_COPY_AND_ASSIGN：
+	 // 禁止使用拷贝构造函数和 operator= 赋值操作的宏
+	 // 应该类的 private: 中使用
+
+	 #define DISALLOW_COPY_AND_ASSIGN(TypeName) \
+            TypeName(const TypeName&); \
+            void operator=(const TypeName&)
+9、 数据成员在任何情况下都必须是私有的
+10、在类中使用特定的声明顺序: public: 在 private: 之前, 成员函数在数据成员 (变量) 前
+		每个区段内的声明通常按以下顺序:
+			typedefs 和枚举 
+			常量 
+			构造函数 
+			析构函数 
+			成员函数, 含静态成员函数 
+			数据成员, 含静态数据成员 
+11、所有按引用传递的参数必须加上 const
+12、我们不使用 C++ 异常.
+13、我们禁止使用 RTTI
+14、使用 C++ 的类型转换, 如 static_cast<>(). 不要使用 int y = (int)x 或 int y = int(x) 等转换方式;
+15、我们强烈建议你在任何可能的情况下都要使用 const
+16、函数命名, 变量命名, 文件命名应具备描述性; 不要过度缩写. 类型和变量应该是名词, 函数名可以用 “命令性” 动词
+	int num_completed_connections;   // Good
+17、类型名称的每个单词首字母均大写, 不包含下划线: MyExcitingClass, MyExcitingEnum
+18、变量名同类型名，类的成员变量以下划线开始
+19、常规函数使用大小写混合, 取值和设值函数则要求与变量名匹配
+20、在每一个文件开头加入版权公告, 然后是文件内容描述.
+	每个文件都应该包含以下项, 依次是:
+
+	版权声明 (比如, Copyright 2008 Google Inc.) 
+	许可证. 为项目选择合适的许可证版本 (比如, Apache 2.0, BSD, LGPL, GPL) 
+	作者: 标识文件的原始作者. 
+21、每个类的定义都要附带一份注释, 描述类的功能和用法.
+// Iterates over the contents of a GargantuanTable.  Sample usage:
+//    GargantuanTable_Iterator* iter = table->NewIterator();
+//    for (iter->Seek("foo"); !iter->done(); iter->Next()) {
+//      process(iter->key(), iter->value());
+//    }
+//    delete iter;
+class GargantuanTable_Iterator {
+    ...
+};
+22、函数声明处注释描述函数功能; 定义处描述函数实现
+	函数声明处注释的内容:
+
+	函数的输入输出. 
+	对类成员函数而言: 函数调用期间对象是否需要保持引用参数, 是否会释放这些参数. 
+	如果函数分配了空间, 需要由调用者释放. 
+	参数是否可以为 NULL. 
+	是否存在函数使用上的性能隐患. 
+	如果函数是可重入的, 其同步前提是什么? 
+23、对于代码中巧妙的, 晦涩的, 有趣的, 重要的地方加以注释.
+24、对那些临时的, 短期的解决方案, 或已经够好但仍不完美的代码使用 TODO 注释
+
+
+
+
+
+
+
+
+
+//////////////////////////////// NAME NOTATION ////////////////////////////////
+SBYTE				m_cByte;		// signed __int8
+SWORD				m_sIndex;		// signed __int16
+INT					m_nIndex;		// signed __int32
+LONG				m_lIndex;		// signed __int64
+
+BYTE				m_ucByte;		// unsigned __int8
+WORD				m_usIndex;		// unsigned __int16
+UINT				m_uiIndex;		// unsigned __int32
+DWORD				m_ulIndex;		// unsigned __int64
+
+enum				m_eType;		// enum
+FLOAT				m_fValue;		// float
+DOUBLE				m_dValue;		// double
+UBOOL				m_bFlag;
+
+Class				m_aClass;		// class, struct
+array				m_arrArray;		// array
+map					m_mapArray;		// map
+list				m_lstArray;		// list
+INT*				m_pIndex;		// pointer to all data type
+ClassPtr			m_ptrClass;		// smart pointer to all data type
+void(Class::*)()	m_pfn			// pointer to function
+
+FString				m_strName;		// FString, ANSICHAR, TCHAR, WCHAR
+
+INT					g_nIndex;		// global variable
+static	UINT		ms_uiIndex;		// static variable
+HWND hWnd			m_hWnd;			// handle
+
+
+
+SBYTE,SWORD,INT,LONG,BYTE,WORD,UINT,DWORD					m_nNumber;
+
+FLOAT														m_fValue;
+DOUBLE														m_dValue;
+
+FString,ANSICHAR,TCHAR,WCHAR								m_sValue;
+
+enum														m_eEnum;
+
+UBOOL														m_bFlag;
+
+Class														m_kClass;
+Class*														m_pkClass;
+
+array														m_arrArray;
+map															m_mapArray;
+list														m_lstArray;
+
+void(Class::*)()											m_pfn;
+
+static UINT													ms_nValue;
+
+HWND														m_hWnd;
+
+
+
+
+/* 
+* brief: 
+* @param:
+* @param:
+* @return; 
+*/

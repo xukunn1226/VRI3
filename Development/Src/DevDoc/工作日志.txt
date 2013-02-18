@@ -1,0 +1,7 @@
+09.12.13
+¡Á	ÍêÉÆÊýÑ§¿â
+¡Á	´ý²âAPI£ºFVector::Rotation()
+			 FVector4::Rotation()
+			 FBox::TransformBy()
+			 FPlane::TransformPlaneByOrtho()
+			 FSphere::TransformBy()

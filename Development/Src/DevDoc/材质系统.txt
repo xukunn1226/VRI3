@@ -1,0 +1,13 @@
+Material Design
+
+1、基本数据及硬件接口的封装；（FShader）
+2、编译模块；	D3DCompileShader
+3、面向材质编辑器设计一套可存储的文件结构；		FMaterial
+4、材质编辑器；
+5、与角色系统的整合；
+
+
+THINKING:
+× 每一个材质（Material）会根据不同条件编译出若干shade code
+		VertexFactoryType
+		render pass

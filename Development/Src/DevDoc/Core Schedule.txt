@@ -1,0 +1,1 @@
+1、基本数据结构，WINDOW API的封装；   尽可能使用STL，仅对字符串封装（FString）2、Math Library；3、日志模块，包括输出至CONSOLE, VS-OUTPUT，FILE；4、线程模块，sync，event，thread；5、RTTI，VObject；

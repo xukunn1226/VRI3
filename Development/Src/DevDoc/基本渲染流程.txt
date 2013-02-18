@@ -1,0 +1,44 @@
+
+	// 渲染整个世界
+		BeginScene();
+		
+		SetRenderTarget();
+		SetViewport();				// 必须在渲染物体之前调用
+		
+		// 渲染场景中物体
+		{
+			// 设置渲染状态
+			SetRasterizerState();
+			
+			SetDepthState();
+			
+			SetStencilState();
+			
+			SetBlendState();
+			
+			SetSamplerState();
+			
+			// 设置顶点格式
+			SetVertexDeclaration();
+			
+			// 设置vs，ps
+			SetVertexShader();
+			SetPixelShader();
+			
+			// 设置数据流
+			SetStreamSource(0);
+			SetStreamSourceFreq(0);
+			
+			...
+			
+			SetStreamSource(1);
+			SetStreamSourceFreq(1);
+			
+			SetIndices();
+			
+			DrawIndexedPrimitive();
+		}
+		
+		EndScene();
+		
+		Present();
